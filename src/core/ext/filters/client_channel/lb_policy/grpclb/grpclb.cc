@@ -963,7 +963,7 @@ void GrpcLb::BalancerCallState::ScheduleNextClientLoadReportLocked() {
   client_load_report_handle_ = GetDefaultEventEngine()->RunAt(
       absl::Now() + absl::Milliseconds(client_stats_report_interval_.millis()),
       [this] {
-        ApplicationCallbackExecCtx callback_exec_ctx;
+        ApplicationCallbackExecCtx app_callback_exec_ctx;
         ExecCtx exec_ctx;
         MaybeSendClientLoadReport();
       });
